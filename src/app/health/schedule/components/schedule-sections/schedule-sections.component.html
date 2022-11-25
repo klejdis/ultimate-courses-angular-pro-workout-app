@@ -1,0 +1,36 @@
+<div class="row bg-info text-center">
+  <div class="col">
+    {{ name}}
+  </div>
+</div>
+
+
+<div *ngIf="scheduleItem?.meals; else addMeal"
+     (click)="onSelect('meals', scheduleItem?.meals)">
+    <span>
+      {{ scheduleItem?.meals | json}}
+    </span>
+</div>
+
+
+<ng-template #addMeal>
+  <div>
+    <a (click)="onSelect('meals')">
+      <img src="assets/img/add.svg">assign meal</a>
+  </div>
+</ng-template>
+
+<div *ngIf="scheduleItem?.workouts; else addWorkout"
+     (click)="onSelect('workouts', scheduleItem?.workouts)"
+>
+    <span>
+      {{ scheduleItem?.workouts | json}}
+    </span>
+</div>
+
+
+<ng-template #addWorkout>
+  <div>
+    <a (click)="onSelect('workouts')"> <img src="assets/img/add.svg"> assign workout</a>
+  </div>
+</ng-template>

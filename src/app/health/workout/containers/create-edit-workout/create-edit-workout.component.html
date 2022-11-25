@@ -1,0 +1,94 @@
+<div class="container w-50 mt-3">
+  <div class="card">
+    <div class="card-header">
+      <div class="d-flex align-content-center">
+        <img class="align-middle mx-1" style="width: 22px" src="assets/img/workout.svg" alt="">
+        <h3 class="d-inline m-0">
+          {{ editMode ? 'Edit' : 'Create a'}} Workout </h3>
+      </div>
+    </div>
+    <div class="card-body" >
+
+      <div *ngIf="!loading">
+
+        <form class="" [formGroup]="form">
+          <div class="mb-3">
+            <label class="form-label">Workout Name</label>
+            <input type="text" class="form-control"  formControlName="name">
+            <div class="text-danger" *ngIf="nameRequired">
+              Name is Requred
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Type </label>
+            <app-workout-type
+              formControlName="type">
+            </app-workout-type>
+          </div>
+
+          <div class="mb-3">
+            <div class="row" *ngIf="this.form.get('type')?.value === 'strength'" formGroupName="strength">
+              <div class="col">
+                <label> Reps</label>
+                <input type="text" class="form-control"  formControlName="reps">
+              </div>
+
+              <div class="col">
+                <label> Sets</label>
+                <input type="text" class="form-control"  formControlName="sets">
+              </div>
+
+              <div class="col">
+                <label> Weight(kg)</label>
+                <input type="text" class="form-control"  formControlName="weight">
+              </div>
+
+
+            </div>
+            <div class="row" *ngIf="this.form.get('type')?.value === 'endurance'" formGroupName="endurance">
+              <div class="col">
+                <label> distance</label>
+                <input type="text" class="form-control"  formControlName="distance">
+              </div>
+
+              <div class="col">
+                <label> duration</label>
+                <input type="text" class="form-control"  formControlName="duration">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <a class="btn btn-danger" routerLink="../">Cancel</a>
+
+            <button type="submit"
+                    class="btn btn-primary"
+                    (click)="submit()"
+                    *ngIf="!editMode"
+            >Submit</button>
+
+            <button type="submit"
+                    class="btn btn-primary"
+                    (click)="update()"
+                    *ngIf="editMode"
+            >Submit</button>
+
+          </div>
+        </form>
+
+      </div>
+
+      <ng-template [ngIf]="loading">
+        <div class="d-flex justify-content-center">
+          <img src="assets/img/loading.svg" alt="">
+          Loading workout
+        </div>
+      </ng-template>
+    </div>
+
+
+
+  </div>
+</div>

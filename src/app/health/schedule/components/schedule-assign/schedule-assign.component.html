@@ -1,0 +1,39 @@
+<div bsModal #assignModal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 id="dialog-sizes-name1" class="modal-title pull-left">
+          <img class="" style="height: 30px" src="assets/img/{{selectedSection?.type == 'meal' ? 'food' : 'workout'}}.svg">
+          ASSIGN {{ selectedSection?.type?.toUpperCase() }}
+        </h6>
+        <button type="button" class="btn-close close pull-right" (click)="assignModal.hide()" aria-label="Close">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <p *ngIf="!list?.length">
+          <img src="assets/img/face.svg">
+          nothing to assign
+        </p>
+
+        <div *ngIf="!!list && list.length">
+          <div class="row" *ngFor="let item of list">
+              <div class="col"
+                   [class.text-success]="exists(item.name)"
+                   (click)="toggleItem(item.name)"
+              >
+                {{ item?.name}}
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+          <button (click)="updateAssign()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

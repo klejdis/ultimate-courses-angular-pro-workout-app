@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col" *ngFor="let selector of selectors"
+        (click)="setSelected(selector)">
+    <div class="bg-light p-2"  [class.workout-type-active]="selector == value">
+      <img src="assets/img/{{selector}}.svg" class="w-25">
+      {{ selector }}
+    </div>
+  </div>
+</div>

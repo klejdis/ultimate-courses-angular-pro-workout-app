@@ -1,0 +1,29 @@
+<div class="row mb-3 pb-1" style="box-shadow: 0 1px #dddddd">
+  <div class="col">
+
+   <a [routerLink]="item.$key" class="text-black text-decoration-none">
+     <h4 class="d-inline"> {{ item.name}} </h4>
+
+     <small *ngIf="item.ingredients">
+       {{ item.ingredients }}
+     </small>
+   </a>
+
+ </div>
+  <div class="col d-flex justify-content-end align-content-center">
+
+    <div class="m-auto" *ngIf="showDeleteConfirm" >
+      <span>
+        Delete item?
+      </span>
+
+      <button class="btn btn-sm btn-danger me-1" (click)="onDeleteItem(item)">yes</button>
+      <button class="btn btn-sm btn-info" (click)="toggleDeleteConfirm()">no</button>
+
+    </div>
+
+    <div>
+      <a (click)="toggleDeleteConfirm()"><img src="assets/img/remove.svg"></a>
+    </div>
+  </div>
+</div>

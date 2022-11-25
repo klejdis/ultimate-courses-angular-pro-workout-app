@@ -1,0 +1,42 @@
+<div class="container w-50 pt-3">
+  <div class="card">
+    <div class="card-header d-flex justify-content-between">
+      <div >
+        <img class="align-middle" style="height: 30px"  src="/assets/img/workout.svg" alt="">
+        <h3 class="d-inline"> Workouts</h3>
+      </div>
+
+      <div>
+        <a routerLink='/workouts/new' class="btn btn-dark"> Create a Workout</a>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row" *ngIf="workouts$ | async as workouts; else loading">
+
+        <div class="text-center" *ngIf="!workouts.length">
+          No Workouts Found
+        </div>
+
+        <app-list-item
+          *ngFor="let workout of workouts"
+          [item] = workout
+          (deleteItem)="remove($event)">
+
+        </app-list-item>
+      </div>
+
+      <ng-template #loading>
+        <div class="d-flex justify-content-center">
+          <img src="assets/img/loading.svg" alt="">
+          Loading Workouts
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+
+
+
+
+
+</div>

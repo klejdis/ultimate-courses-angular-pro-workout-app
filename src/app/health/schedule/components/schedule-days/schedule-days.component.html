@@ -1,0 +1,7 @@
+<div class="row text-center">
+  <div class="col" *ngFor="let day of daysOfWeekArray">
+    <button class="btn btn-sm btn-round" (click)="onDateChangeListener(day)">
+      {{  daysArray[day.getDay() ] }}
+    </button>
+  </div>
+</div>

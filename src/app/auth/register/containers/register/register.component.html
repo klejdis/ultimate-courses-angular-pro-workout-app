@@ -1,0 +1,11 @@
+<app-authform (submitted)="submitted($event)">
+  <h1>Regiter</h1>
+
+  <a routerLink="/auth/login">Login</a>
+
+  <button type="submit">
+    Register
+  </button>
+
+  <div class="error" *ngIf="error">{{error}}</div>
+</app-authform>

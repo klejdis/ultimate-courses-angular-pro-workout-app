@@ -1,0 +1,17 @@
+<div class="container w-50 pt-3">
+  <app-schedule-calendar
+    [date] = "date$ | async"
+    [scheduleList] = "schedule$ | async"
+    (onDateChange)="onDateChangeListener($event)"
+    (sectionSelected)="onSectionSelected($event)"
+  >
+  </app-schedule-calendar>
+
+  <app-schedule-assign
+    [selectedSection]="selectedSection$ | async"
+    [list]="list$ | async"
+    (updateSection)="onUpdateSection($event)"
+  >
+  </app-schedule-assign>
+
+</div>

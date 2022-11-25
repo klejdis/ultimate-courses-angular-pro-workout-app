@@ -1,0 +1,17 @@
+<div class="row text-bg-light p-2">
+  <div class="col">
+    <button class="btn btn-dark" (click)="decreaseOffset()">
+      <img src="assets/img/chevron-left.svg">
+    </button>
+  </div>
+  <div class="col text-center align-middle">
+    {{ date | date:'d-M-Y' }}
+  </div>
+  <div class="col d-flex justify-content-end">
+    <button class="btn btn-dark" (click)="increaseOffset()">
+      <img src="assets/img/chevron-right.svg">
+    </button>
+  </div>
+</div>
+
+

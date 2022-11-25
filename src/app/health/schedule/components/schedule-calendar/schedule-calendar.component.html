@@ -1,0 +1,18 @@
+<app-schedule-controls
+  [date]="selectedDate"
+  (onDateChange)="onDateChangeListener($event)">
+</app-schedule-controls>
+
+<app-schedule-days
+  [date] = "selectedDate"
+  (onDateChange)="onDateChangeListener($event)"
+>
+</app-schedule-days>
+
+<app-schedule-sections
+*ngFor="let section of sections"
+[name]="section.name"
+[scheduleItem]="getSection(section.key)"
+(sectionSelected)="onSelectSection($event, section.key)"
+>
+</app-schedule-sections>

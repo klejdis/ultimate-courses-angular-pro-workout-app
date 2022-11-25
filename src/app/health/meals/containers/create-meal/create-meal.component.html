@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h3>Create a Meal</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <form class="w-50" [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label">Meal Name</label>
+          <input type="text" class="form-control"  formControlName="name">
+          <div class="text-danger" *ngIf="nameRequired">
+            Name is Requred
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="d-flex justify-content-between mb-2">
+            <h4>Food</h4>
+            <button class="btn btn-dark" (click)="addIngredient()"> Add Food </button>
+          </div>
+
+         <div formArrayName="ingredients">
+           <div class="input-group mb-3" *ngFor="let c of ingredients.controls; index as i">
+             <input type="text"
+                    class="form-control"
+                    placeholder="Some Food like eg: Eggs"
+                    [formControlName]="i"
+             >
+             <button class="btn btn-outline-secondary" (click)="removeIngredient(i)">
+               Remove
+             </button>
+           </div>
+         </div>
+
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <a class="btn btn-danger" routerLink="../">Cancel</a>
+
+          <button type="submit"
+                  class="btn btn-primary"
+                  (click)="submitCreateMeal()"
+          >Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
